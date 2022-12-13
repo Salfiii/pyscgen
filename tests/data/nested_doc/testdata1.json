@@ -1,0 +1,8 @@
+{
+    "DocOnlyIn2": {
+        "Attribute": "text",
+        "NestedDocOnlyIn2": {
+            "Datatype": "text"
+        }
+    }
+}

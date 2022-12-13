@@ -1,0 +1,25 @@
+{
+    "BoolField": true,
+    "DocListExistsOnlyIn1": [
+        {
+            "a": "text",
+            "b": "text",
+            "c": "text"
+        }
+    ],
+    "DocOnlyIn2": {
+        "Attribute": "text",
+        "Datatype": "text",
+        "ID": "text",
+        "NestedDocOnlyIn2": {
+            "Attribute": "text",
+            "Datatype": "text"
+        },
+        "Value": "text"
+    },
+    "ListExistsOnlyIn1": [
+        "text"
+    ],
+    "OnlyIn2": "text",
+    "Version": "text"
+}

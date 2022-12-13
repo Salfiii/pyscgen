@@ -1,0 +1,95 @@
+{
+  "name": "PyScGenClass",
+  "type": "record",
+  "namespace": "com.pyscgen.avro",
+  "fields": [
+    {
+      "name": "document_list",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "document_list_record",
+          "type": "record",
+          "fields": [
+            {
+              "name": "float",
+              "type": [
+                "null",
+                "float"
+              ]
+            },
+            {
+              "name": "int",
+              "type": [
+                "null",
+                "int"
+              ]
+            },
+            {
+              "name": "string",
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "float",
+      "type": [
+        "null",
+        "float"
+      ]
+    },
+    {
+      "name": "int",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "mixed_type_element",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "string",
+      "type": "string"
+    },
+    {
+      "name": "sub_document",
+      "type": {
+        "name": "sub_document",
+        "type": "record",
+        "fields": [
+          {
+            "name": "sub_doc_float",
+            "type": [
+              "null",
+              "float"
+            ]
+          },
+          {
+            "name": "sub_doc_int",
+            "type": [
+              "null",
+              "int"
+            ]
+          },
+          {
+            "name": "sub_doc_string",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

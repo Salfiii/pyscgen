@@ -1,0 +1,11 @@
+{
+  "string": "string_value",
+  "mixed_type_element": 1,
+  "document_list": [
+    {
+      "string": "string_value",
+      "int": 1,
+      "float": 1.2
+    }
+  ]
+}

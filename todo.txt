@@ -1,0 +1,2 @@
+- add a choice to output union types or just use string as the most common denominator.
+- Debug the order mode? If it is set to false, a wrong schema might be created in some edge cases: AvroSchemaGenerator(True)

@@ -1,0 +1,12 @@
+{
+  "string": "string_value",
+  "sub_document": {
+    "sub_doc_string": "B",
+    "sub_doc_int": 1
+  },
+  "document_list": [
+    {
+      "string": "string_value"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "string": "string_value",
+  "int": 1,
+  "float": 1.2,
+  "mixed_type_element": 1.23
+}

@@ -1,0 +1,15 @@
+{
+  "BoolField": false,
+  "Version": "1.0",
+  "OnlyIn2": "str",
+  "DocOnlyIn2": {
+    "Attribute": "str",
+    "Datatype": "int",
+    "ID": "1",
+    "Value": "0",
+    "NestedDocOnlyIn2": {
+      "Attribute": "value",
+      "Datatype": "str"
+    }
+  }
+}

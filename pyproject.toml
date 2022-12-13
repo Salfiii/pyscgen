@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "pyscgen"
+version = "0.2.1"
+description = "Python AVRO Schema generator which can use multiples example JSONs as input to infer the Schema."
+authors = ["Florian Salfenmoser <florian.salfenmoser.dev@outlook.de>"]
+readme = "README.md"
+license = "BSD-3-Clause"
+repository = "https://github.com/Salfiii/pyscgen"
+homepage = "https://github.com/Salfiii/pyscgen"
+keywords = ["AVRO", "JSON", "merge", "analyze", "pydantic", "model", "schema", "generator"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^1.4.1"
+glom = "^22.1.0"
+pydantic = "^1.9.0"
+shortuuid = "^1.0.8"
+pydantic-avro = "^0.4.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.2"
+fastavro = "^1.4.9"
+coverage = "^6.3.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

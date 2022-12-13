@@ -1,0 +1,17 @@
+{
+  "string": "string_value",
+  "int": 1,
+  "float": 1.2,
+  "mixed_type_element": "string",
+  "sub_document": {
+    "sub_doc_string": "A",
+    "sub_doc_float": 1.23
+  },
+  "document_list": [
+    {
+      "string": "string_value",
+      "int": 1,
+      "float": 1.2
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+include LICENSE 
+include CHANGES 
+include README.md 
+include requirements.txt
+recursive-exclude * __pycache__
+recursive-exclude * *.pyc
+recursive-exclude * *.pyo
+recursive-exclude * *.orig

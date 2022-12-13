@@ -1,0 +1,15 @@
+{
+  "BoolField": false,
+  "Version": "1.0",
+  "ListExistsOnlyIn1": [
+    "a",
+    "b"
+  ],
+  "DocListExistsOnlyIn1": [
+    {
+      "a": "a",
+      "b": "b",
+      "c": "c"
+    }
+  ]
+}

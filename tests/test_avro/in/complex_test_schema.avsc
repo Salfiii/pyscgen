@@ -1,0 +1,159 @@
+{
+  "name": "PyScGenClass",
+  "type": "record",
+  "namespace": "com.pyscgen.avro",
+  "fields": [
+    {
+      "name": "document_list",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "document_list_record",
+          "type": "record",
+          "fields": [
+            {
+              "name": "float",
+              "type": "float"
+            },
+            {
+              "name": "float2",
+              "type": "float"
+            },
+            {
+              "name": "int",
+              "type": "int"
+            },
+            {
+              "name": "string",
+              "type": "string"
+            },
+            {
+              "name": "string2",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "float",
+      "type": "float"
+    },
+    {
+      "name": "int",
+      "type": "int"
+    },
+    {
+      "name": "list_of_doc_lists",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "name": "_record",
+            "type": "record",
+            "fields": [
+              {
+                "name": "a",
+                "type": "string"
+              },
+              {
+                "name": "b",
+                "type": "int"
+              },
+              {
+                "name": "c",
+                "type": "float"
+              },
+              {
+                "name": "d",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "list_of_lists",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": "string"
+        }
+      }
+    },
+    {
+      "name": "list_of_lists_int",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": "int"
+        }
+      }
+    },
+    {
+      "name": "mixed_type_element",
+      "type": "string"
+    },
+    {
+      "name": "only_in_4",
+      "type": "string"
+    },
+    {
+      "name": "simple_list",
+      "type": {
+        "type": "array",
+        "items": "string"
+      }
+    },
+    {
+      "name": "string",
+      "type": "string"
+    },
+    {
+      "name": "sub_document",
+      "type": {
+        "name": "sub_document",
+        "type": "record",
+        "fields": [
+          {
+            "name": "sub_doc_float",
+            "type": "float"
+          },
+          {
+            "name": "sub_doc_int",
+            "type": "int"
+          },
+          {
+            "name": "sub_doc_string",
+            "type": "string"
+          },
+          {
+            "name": "sub_document_sub",
+            "type": {
+              "name": "sub_document_sub",
+              "type": "record",
+              "fields": [
+                {
+                  "name": "sub_doc_float",
+                  "type": "float"
+                },
+                {
+                  "name": "sub_doc_int",
+                  "type": "int"
+                },
+                {
+                  "name": "sub_sub_doc_string",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

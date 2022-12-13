@@ -1,0 +1,1 @@
+pip install -i https://test.pypi.org/simple/ pyscgen --no-deps

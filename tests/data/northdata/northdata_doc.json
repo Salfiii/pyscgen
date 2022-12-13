@@ -1,0 +1,323 @@
+{
+    "address": {
+        "city": "text",
+        "country": "text",
+        "formattedValue": "text",
+        "lat": 1.23,
+        "lng": 1.23,
+        "postalCode": "text",
+        "state": "text",
+        "street": "text"
+    },
+    "blocked": true,
+    "capital": {
+        "consolidated": true,
+        "date": "text",
+        "formattedDate": "text",
+        "items": [
+            {
+                "estimate": true,
+                "formattedValue": "text",
+                "id": "text",
+                "name": "text",
+                "note": "text",
+                "unit": "text",
+                "value": 1.23
+            }
+        ],
+        "source": {
+            "auditorName": "text",
+            "publicationDate": "text",
+            "publicationId": "text",
+            "publicationTitle": "text"
+        }
+    },
+    "events": {
+        "items": [
+            {
+                "date": "text",
+                "description": "text",
+                "type": "text"
+            }
+        ]
+    },
+    "extras": [
+        {
+            "items": [
+                {
+                    "formattedHtmlValue": "text",
+                    "id": "text",
+                    "name": "text",
+                    "value": "text"
+                }
+            ],
+            "sourceName": "text",
+            "sourceUrl": "text"
+        }
+    ],
+    "financials": {
+        "consolidated": true,
+        "date": "text",
+        "formattedDate": "text",
+        "items": [
+            {
+                "estimate": true,
+                "formattedValue": "text",
+                "id": "text",
+                "name": "text",
+                "note": "text",
+                "unit": "text",
+                "value": 1.23
+            }
+        ],
+        "source": {
+            "auditorName": "text",
+            "publicationDate": "text",
+            "publicationId": "text",
+            "publicationTitle": "text"
+        }
+    },
+    "history": {
+        "addresses": [
+            {
+                "address": {
+                    "city": "text",
+                    "country": "text",
+                    "formattedValue": "text",
+                    "lat": 1.23,
+                    "lng": 1.23,
+                    "postalCode": "text",
+                    "state": "text",
+                    "street": "text"
+                },
+                "date": "text"
+            }
+        ],
+        "financials": [
+            {
+                "consolidated": true,
+                "date": "text",
+                "formattedDate": "text",
+                "items": [
+                    {
+                        "estimate": true,
+                        "formattedValue": "text",
+                        "id": "text",
+                        "name": "text",
+                        "note": "text",
+                        "unit": "text",
+                        "value": 1.23
+                    }
+                ],
+                "source": {
+                    "auditorName": "text",
+                    "publicationDate": "text",
+                    "publicationId": "text",
+                    "publicationTitle": "text"
+                }
+            }
+        ],
+        "names": [
+            {
+                "date": "text",
+                "name": {
+                    "legalForm": "text",
+                    "name": "text"
+                }
+            }
+        ],
+        "registers": [
+            {
+                "date": "text",
+                "register": {
+                    "city": "text",
+                    "country": "text",
+                    "id": "text",
+                    "uniqueKey": "text"
+                }
+            }
+        ]
+    },
+    "id": "text",
+    "lei": "text",
+    "mktgTechIndicators": {
+        "consolidated": true,
+        "date": "text",
+        "formattedDate": "text",
+        "items": [
+            {
+                "estimate": true,
+                "formattedValue": "text",
+                "id": "text",
+                "name": "text",
+                "note": "text",
+                "unit": "text",
+                "value": 1.23
+            }
+        ],
+        "source": {
+            "auditorName": "text",
+            "publicationId": "text",
+            "publicationTitle": "text"
+        }
+    },
+    "name": {
+        "legalForm": "text",
+        "name": "text"
+    },
+    "northDataUrl": "text",
+    "register": {
+        "city": "text",
+        "country": "text",
+        "id": "text",
+        "uniqueKey": "text"
+    },
+    "relatedCompanies": {
+        "items": [
+            {
+                "company": {
+                    "address": {
+                        "city": "text",
+                        "country": "text",
+                        "formattedValue": "text",
+                        "lat": 1.23,
+                        "lng": 1.23,
+                        "postalCode": "text",
+                        "state": "text",
+                        "street": "text"
+                    },
+                    "blocked": true,
+                    "id": "text",
+                    "lei": "text",
+                    "name": {
+                        "legalForm": "text",
+                        "name": "text"
+                    },
+                    "northDataUrl": "text",
+                    "register": {
+                        "city": "text",
+                        "country": "text",
+                        "id": "text",
+                        "uniqueKey": "text"
+                    },
+                    "segmentCodes": {
+                        "isic": [
+                            "text"
+                        ],
+                        "nace": [
+                            "text"
+                        ],
+                        "naics": [
+                            "text"
+                        ],
+                        "uksic": [
+                            "text"
+                        ],
+                        "wz": [
+                            "text"
+                        ]
+                    },
+                    "status": "text",
+                    "subject": "text",
+                    "terminated": true
+                },
+                "roles": [
+                    {
+                        "date": "text",
+                        "demotion": true,
+                        "dir": "text",
+                        "group": "text",
+                        "name": "text",
+                        "sharesPercent": 1.23,
+                        "type": "text"
+                    }
+                ]
+            }
+        ]
+    },
+    "relatedPersons": {
+        "items": [
+            {
+                "person": {
+                    "address": {
+                        "city": "text",
+                        "country": "text",
+                        "formattedValue": "text",
+                        "state": "text"
+                    },
+                    "birthDate": "text",
+                    "birthYear": 10,
+                    "blocked": true,
+                    "deceased": true,
+                    "id": "text",
+                    "name": {
+                        "firstName": "text",
+                        "lastName": "text"
+                    },
+                    "northDataUrl": "text"
+                },
+                "roles": [
+                    {
+                        "date": "text",
+                        "demotion": true,
+                        "dir": "text",
+                        "group": "text",
+                        "name": "text",
+                        "sharesPercent": 1.23,
+                        "type": "text"
+                    }
+                ]
+            }
+        ]
+    },
+    "segmentCodes": {
+        "isic": [
+            "text"
+        ],
+        "nace": [
+            "text"
+        ],
+        "naics": [
+            "text"
+        ],
+        "uksic": [
+            "text"
+        ],
+        "wz": [
+            "text"
+        ]
+    },
+    "sheets": [
+        {
+            "columnHeaders": [
+                {
+                    "date": "text",
+                    "source": {
+                        "auditorName": "text",
+                        "publicationDate": "text",
+                        "publicationId": "text",
+                        "publicationTitle": "text"
+                    }
+                }
+            ],
+            "consolidated": true,
+            "reporting": "text",
+            "rows": [
+                {
+                    "cells": [
+                        {
+                            "value": 1.23
+                        }
+                    ],
+                    "level": 10,
+                    "name": "text"
+                }
+            ],
+            "type": "text",
+            "unit": "text"
+        }
+    ],
+    "status": "text",
+    "subject": "text",
+    "terminated": true
+}

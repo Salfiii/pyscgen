@@ -1,0 +1,58 @@
+{
+  "name": "MyClass",
+  "type": "record",
+  "namespace": "com.acme.avro",
+  "fields": [
+    {
+      "name": "DocListExistsOnlyIn1",
+      "type": [
+        "null",
+        {
+          "type": "array",
+          "items": {
+            "name": "DocListExistsOnlyIn1_record",
+            "type": "record",
+            "fields": [
+              {
+                "name": "a",
+                "type": "string"
+              },
+              {
+                "name": "b",
+                "type": "string"
+              },
+              {
+                "name": "c",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "DocOnlyIn2",
+      "type": [
+        "null",
+        {
+          "name": "DocOnlyIn2",
+          "type": "record",
+          "fields": [
+            {
+              "name": "Attribute",
+              "type": "string"
+            },
+            {
+              "name": "Datatype",
+              "type": "string"
+            },
+            {
+              "name": "ID",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

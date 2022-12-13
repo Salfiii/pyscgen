@@ -1,0 +1,19 @@
+{
+    "SimpleList": [
+        "text"
+    ],
+    "SntAusFolgemitfortschreibungJN": true,
+    "SntBestandsauswertung": {
+        "SntBestandsauswertungDynamisch": [
+            {
+                "Attribut": "text",
+                "Datentyp": "text",
+                "Identifikator": "text",
+                "WertText": "text"
+            }
+        ],
+        "SntID": "text",
+        "Versicherungsnummer": 10
+    },
+    "SntFOVersion": "text"
+}

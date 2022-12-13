@@ -1,0 +1,14 @@
+/.eggs
+/.pytest_cache
+/.vscode
+/build
+/lv1871.egg-info
+**/*__pycache__
+/.idea
+*.csv
+*.jsonl
+/misc
+/tests/test_json/out/*.json
+/tests/test_avro/out/*.avsc
+/dist/
+/tests/test_pydantic/out/*.py

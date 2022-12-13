@@ -1,0 +1,16 @@
+{
+  "SntAusFolgemitfortschreibungJN": false,
+  "SntFOVersion": "1.0",
+  "SntBestandsauswertung": {
+    "SntID": "SchnittstelleBestandsauswertung",
+    "Versicherungsnummer": 82001001,
+    "SntBestandsauswertungDynamisch": [
+      {
+        "Attribut": "Karenzzeit",
+        "Datentyp": "int",
+        "Identifikator": "Risiko@1001@1@",
+        "WertText": "0"
+      }
+    ]
+  }
+}

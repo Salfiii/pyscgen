@@ -1,0 +1,19 @@
+{
+	"string": "string_value3asdfasfasdf",
+	"is_null_but_in_every_file": null,
+	"document_list": [
+		{
+			"string": "string_value2asdfasfasd",
+			"int": 283,
+			"float": 2.544,
+			"string2": "string_value3"
+		},
+		{
+			"string": "string_value3",
+			"int": 744,
+			"float": 3.735,
+			"float2": 234.3
+		}
+	],
+	"only_in_4": "test"
+}

@@ -1,0 +1,66 @@
+{
+	"string": "string_value234",
+	"is_null_but_in_every_file": null,
+	"int": 4,
+	"float": 3.2,
+	"mixed_type_element": 1,
+	"sub_document": {
+		"sub_doc_string": "A",
+		"sub_doc_int": 1,
+		"sub_doc_float": 1.2
+	},
+	"simple_list": [
+		"A",
+		"C",
+		"D"
+	],
+	"document_list": [
+		{
+			"string": "string_value",
+			"int": 1,
+			"float": 1.2
+		},
+		{
+			"string": "string_value3",
+			"int": 4,
+			"float": 3.7
+		}
+	],
+	"list_of_lists": [
+	[
+		"A",
+		"B",
+		"C",
+		"D"
+	],
+	[
+		"E",
+		"F",
+		"G",
+		"H"
+	]
+	],
+	"list_of_doc_lists": [
+	[
+		{
+			"a": "asfasdfasdf",
+			"b": 345345,
+			"c": 867567.2
+		}
+	],
+	[
+		{
+			"a": "asdsdfhngn",
+			"b": 234234,
+			"c": 758342.2,
+			"d": "asdfjasdlf"
+		},
+		{
+			"a": "afgjd",
+			"b": 2754,
+			"c": 67856756.2,
+			"d": "asdfjasdlf"
+		}
+	]
+	]
+}
