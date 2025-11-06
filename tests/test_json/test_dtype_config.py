@@ -1,4 +1,5 @@
 import pytest
+
 from pyscgen.__config.dtype_config import DataTypeConfig
 
 
@@ -23,7 +24,7 @@ class TestDataTypeConfig:
     def test_set_dtype_config_exception(self):
         dtype_config = DataTypeConfig()
         config: dict = dtype_config.data_type_config.copy()
-        config.pop("None", None)
+        config.pop("NoneType", None)
         with pytest.raises(DataTypeConfig.ContainsNotAllNeededConfigEntriesException):
             dtype_config.data_type_config = config
 

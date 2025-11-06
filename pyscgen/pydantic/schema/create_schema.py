@@ -1,5 +1,5 @@
-from pydantic_avro.avro_to_pydantic import avsc_to_pydantic
 from pyscgen.avro.schema.create_schema import AvroSchemaGenerator
+from pydantic_avro.from_avro.avro_to_pydantic import avsc_to_pydantic 
 
 
 class PydanticSchemaGenerator:
@@ -16,6 +16,7 @@ class PydanticSchemaGenerator:
         self.avro_schema_generator = AvroSchemaGenerator(alphabetically_ordered_by_path=alphabetically_ordered_by_path, debug=debug)
         self.debug = debug
 
+
     def create_schema(self, docs: [dict], name: str = "PyScGenClass", namespace: str = "com.pyscgen.avro") -> str:
         """
         Creates a pydantic schema/model based on some JSON Messages
@@ -25,6 +26,6 @@ class PydanticSchemaGenerator:
         :return:
         """
         avro_schema = self.avro_schema_generator.create_schema(docs=docs, name=name, namespace=namespace)
+        print(avro_schema.as_dict(remove_empty=True))
         pydantic_schema = avsc_to_pydantic(avro_schema.as_dict(remove_empty=True))
         return pydantic_schema
-

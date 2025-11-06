@@ -137,6 +137,7 @@ class AvroSchemaGenerator:
         :return:
         """
         name: str = column_info.avro_name
+        avro_additional = column_info.data_type_config.avro_additional or {}
         if is_list:
             if parent_is_list:
                 if column_info.has_nulls:
@@ -159,7 +160,7 @@ class AvroSchemaGenerator:
                     nullability_array = array
                 return_obj = Field(name=name, type=nullability_array,
                                    logicalType=column_info.data_type_config.avro_logical_type,
-                                   **column_info.data_type_config.avro_additional, default=default)
+                                   **avro_additional, default=default)
         elif is_dict:
             if parent_is_list:
                 record: Record = Record(name=name, type=column_info.data_type_config.avro_type)
@@ -177,7 +178,7 @@ class AvroSchemaGenerator:
                     nullability_record = record
                 return_obj = Field(name=name, type=nullability_record,
                                    logicalType=column_info.data_type_config.avro_logical_type,
-                                   **column_info.data_type_config.avro_additional)
+                                   **avro_additional)
         else:
             field_type = ["null",
                           column_info.data_type_config.avro_type] if column_info.has_nulls else column_info.data_type_config.avro_type
@@ -187,6 +188,6 @@ class AvroSchemaGenerator:
             else:
                 return_obj: Field = Field(name=name, type=field_type,
                                           logicalType=column_info.data_type_config.avro_logical_type,
-                                          **column_info.data_type_config.avro_additional)
+                                          **avro_additional)
 
         return return_obj

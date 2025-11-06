@@ -85,9 +85,10 @@ class DataTypeConfig:
                 "python_value": decimal.Decimal(1),
                 "avro_type": "bytes",
                 "avro_logical_type": "decimal",
-                "avro_additional": {"precision": 4,
-                                    "scale": 2
-                                    },
+                "avro_additional": {
+                    "precision": 4,
+                    "scale": 2
+                },
                 "json_type": None
             },
             "datetime.date": {

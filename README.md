@@ -4,11 +4,11 @@ AVRO-Schemas based on multiple given JSON Documents.
 
 ## Installation
 
+### uv
+``uv add pyscgen``
+
 ### pip
 ``pip install pyscgen``
-
-### poetry
-``poetry add pyscgen``
 
 ## JSON Analyzer
 receives a list of json documents, analyzes the structure and outputs the following infos:

@@ -1,24 +1,12 @@
 import datetime
 import decimal
-import glob
-import os
 import json
+import os
 
-import fastavro
 import pytest
 
 from pyscgen.pydantic.schema.create_schema import PydanticSchemaGenerator
-
-
-def get_test_avro_schema():
-    """
-
-    :return:
-    """
-    file_path: str = "./in/test_schema.avsc"
-    with open(file_path, "r") as file:
-        avro_str = file.read()
-    return avro_str
+from tests.test_data_commons import get_data_path, get_path_rel_to
 
 
 def get_data(test: str) -> dict:
@@ -27,12 +15,11 @@ def get_data(test: str) -> dict:
     :return:
     """
     return_obj: dict = {}
-    data_folder: str = "../data/"
     data = []
-    test_path: str = data_folder + test
+    test_path: str = os.path.join(get_data_path(), test)
     for filename in os.listdir(test_path):
         file_path = os.path.join(test_path, filename)
-        with open(file_path, "r") as file:
+        with open(file_path) as file:
             json_ = json.load(file)
             data.append(json_)
     return_obj[test] = data
@@ -44,88 +31,47 @@ def get_instance():
     return PydanticSchemaGenerator(True, False)
 
 
+def run_schema_test(test_group_name: str):
+    """
+    Run a standard Pydantic schema generation test.
+    :param test_group_name: Test group name (used for file paths)
+    """
+    generator = get_instance()
+    data: dict = get_data(test_group_name)
+    for test, docs in data.items():
+        print("working on test: " + test)
+        schema = generator.create_schema(docs)
+        print(schema)
+        schema_path: str = get_path_rel_to(__file__, "./out/" + test + "_pydantic_model.py") #
+        with open(schema_path, "w+") as file:
+            file.write(schema)
+
+
 class TestPydanticSchemaGenerator:
-
+    @pytest.mark.only
     def test_schema_generation_simple(self):
-        generator = get_instance()
-        data: dict = get_data("simple")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_path: str = "./out/" + test + "_pydantic_model.py"
-            with open(schema_path, "w+") as file:
-                file.write(schema)
-
+        run_schema_test("simple")
 
     def test_schema_generation_nested_doc(self):
-        generator = get_instance()
-        data: dict = get_data("nested_doc")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_path: str = "./out/" + test + "_pydantic_model.py"
-            with open(schema_path, "w+") as file:
-                file.write(schema)
+        run_schema_test("nested_doc")
 
     def test_schema_generation_nested_array(self):
-        generator = get_instance()
-        data: dict = get_data("nested_array")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_path: str = "./out/" + test + "_pydantic_model.py"
-            with open(schema_path, "w+") as file:
-                file.write(schema)
+        run_schema_test("nested_array")
 
     def test_schema_generation_nullable_array_and_record(self):
-        generator = get_instance()
-        data: dict = get_data("nullable_array_and_record")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_path: str = "./out/" + test + "_pydantic_model.py"
-            with open(schema_path, "w+") as file:
-                file.write(schema)
+        run_schema_test("nullable_array_and_record")
 
     def test_schema_generation_complex(self):
-        generator = get_instance()
-        data: dict = get_data("complex")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_path: str = "./out/" + test + "_pydantic_model.py"
-            with open(schema_path, "w+") as file:
-                file.write(schema)
+        run_schema_test("complex")
 
     def test_schema_generation_deeply_nested(self):
-        generator = get_instance()
-        data: dict = get_data("deeply_nested")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_path: str = "./out/" + test + "_pydantic_model.py"
-            with open(schema_path, "w+") as file:
-                file.write(schema)
+        run_schema_test("deeply_nested")
 
     def test_schema_generation_array(self):
-        generator = get_instance()
-        data: dict = get_data("array")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_path: str = "./out/" + test + "_pydantic_model.py"
-            with open(schema_path, "w+") as file:
-                file.write(schema)
+        run_schema_test("array")
 
     def test_schema_generation_northdata(self):
-        generator = get_instance()
-        data: dict = get_data("northdata")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_path: str = "./out/" + test + "_pydantic_model.py"
-            with open(schema_path, "w+") as file:
-                file.write(schema)
+        run_schema_test("northdata")
 
     def test_schema_generator_all_dtypes(self):
         generator = get_instance()
@@ -153,12 +99,9 @@ class TestPydanticSchemaGenerator:
                 weeks=2
             )
         }
-        # bytes is currently not supported to converto from avro to pydantic
+        # bytes is currently not supported to convert from avro to pydantic
         with pytest.raises(NotImplementedError):
             schema = generator.create_schema([data])
-            schema_path: str = "./out/" + test + "_pydantic_model.py"
+            schema_path: str = get_path_rel_to(__file__, "./out/" + test + "_pydantic_model.py")
             with open(schema_path, "w+") as file:
                 file.write(schema)
-
-
-
