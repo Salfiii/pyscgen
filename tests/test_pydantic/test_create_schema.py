@@ -48,7 +48,6 @@ def run_schema_test(test_group_name: str):
 
 
 class TestPydanticSchemaGenerator:
-    @pytest.mark.only
     def test_schema_generation_simple(self):
         run_schema_test("simple")
 
