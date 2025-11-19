@@ -1,3 +1,3 @@
 cd ../
-poetry shell
-poetry install
+poetry env activate
+poetry install --with dev

@@ -160,7 +160,7 @@ class JSONAnalyzer:
             except Exception as e:
                 # @TODO: Generic solution for dicts and lists of lists
                 merged_ls = []
-                for index, value in df_flattened[column_path].iteritems():
+                for index, value in df_flattened[column_path].items():
                     merged_ls.append(value)
                 # https://stackoverflow.com/questions/3724551/python-uniqueness-for-list-of-lists
                 try:

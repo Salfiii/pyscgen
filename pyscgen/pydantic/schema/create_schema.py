@@ -1,6 +1,5 @@
-from pydantic_avro.avro_to_pydantic import avsc_to_pydantic
 from pyscgen.avro.schema.create_schema import AvroSchemaGenerator
-
+from pydantic_avro.from_avro.avro_to_pydantic import avsc_to_pydantic
 
 class PydanticSchemaGenerator:
 
