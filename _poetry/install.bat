@@ -9,3 +9,4 @@ poetry config
 # gibt die aktuelle config in der Konsole aus
 poetry config --list
 # das interne repository listen
+PAUSE

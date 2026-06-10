@@ -1,6 +1,6 @@
 [project]
 name = "pyscgen"
-version = "0.2.1"
+version = "0.3.0"
 description = "Python AVRO Schema generator which can use multiples example JSONs as input to infer the Schema."
 authors = [
     {name = "Florian Salfenmoser", email = "florian.salfenmoser.dev@outlook.de"}
