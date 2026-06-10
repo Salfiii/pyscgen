@@ -12,3 +12,4 @@
 /tests/test_avro/out/*.avsc
 /dist/
 /tests/test_pydantic/out/*.py
+/tests/test_pydantic/out/*.avsc

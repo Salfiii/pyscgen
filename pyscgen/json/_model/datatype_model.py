@@ -1,18 +1,17 @@
-from typing import List, Optional
+from typing import Optional
 from dataclasses import asdict
 from pydantic.dataclasses import dataclass
+from pydantic import ConfigDict
 
-from pyscgen.json._model.__model_config import ModelConfig
 
-
-@dataclass(config=ModelConfig)
+@dataclass(config=ConfigDict(arbitrary_types_allowed=True))
 class DataTypeConfigModel:
     python_type: object
     python_value: object
     avro_type: str
     avro_logical_type: Optional[str]
-    avro_additional: Optional[dict]
-    json_type: Optional[str]
+    avro_additional: Optional[dict] = None
+    json_type: Optional[str] = None
 
     def __init__(self, python_type: object,
                  python_value: object,

@@ -1,0 +1,17 @@
+{
+    "list_of_doc_lists": [
+        [
+            {
+                "a": "text",
+                "b": 10,
+                "c": 1.23,
+                "d": "text"
+            }
+        ]
+    ],
+    "list_of_lists": [
+        [
+            "text"
+        ]
+    ]
+}

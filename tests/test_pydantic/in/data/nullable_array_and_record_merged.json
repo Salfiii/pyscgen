@@ -1,0 +1,14 @@
+{
+    "DocListExistsOnlyIn1": [
+        {
+            "a": "text",
+            "b": "text",
+            "c": "text"
+        }
+    ],
+    "DocOnlyIn2": {
+        "Attribute": "text",
+        "Datatype": "text",
+        "ID": "text"
+    }
+}

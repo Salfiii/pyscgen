@@ -6,6 +6,7 @@ import os
 from typing import Any
 
 from pyscgen.json.analyze.analyze_documents import JSONAnalyzer
+from tests.test_data_commons import get_data_path
 
 
 class JSONEncoder(json.JSONEncoder):
@@ -27,9 +28,8 @@ def get_data(test: str) -> [dict]:
     Return the JSON-Data from file.
     :return:
     """
-    data_folder: str = "../data/"
     data = []
-    test_path: str = data_folder + test
+    test_path: str = os.path.join(get_data_path(), test)
     for filename in os.listdir(test_path):
         file_path = os.path.join(test_path, filename)
         with open(file_path, "r") as file:

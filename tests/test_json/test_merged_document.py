@@ -7,6 +7,8 @@ from pyscgen.json.merge.merge_documents import DocumentMerger
 
 from json import JSONEncoder
 
+from tests.test_data_commons import get_data_path, get_path_rel_to
+
 
 class JSONEncoder(json.JSONEncoder):
     """
@@ -186,9 +188,8 @@ def get_data(test: str) -> [dict]:
     Return the JSON-Data from file.
     :return:
     """
-    data_folder: str = "../data/"
     data = []
-    test_path: str = data_folder + test
+    test_path: str = os.path.join(get_data_path(), test)
     for filename in os.listdir(test_path):
         file_path = os.path.join(test_path, filename)
         with open(file_path, "r") as file:
@@ -200,82 +201,41 @@ def get_data(test: str) -> [dict]:
 def get_merged_instance():
     return DocumentMerger()
 
+def run_merger_test(test_group_name: str):
+    """
+    Run a standard merger test: merge documents, write output file, and assert result.
+    :param test: Test group name (used for file paths)
+    """
+    json_merger = get_merged_instance()
+    docs: [dict] = get_data(test_group_name)
+    merged = json_merger.get_merged_document(docs)
+
+    output_path = get_path_rel_to(__file__, "./out/" + test_group_name + "_merged.json")
+    with open(output_path, "w+") as file:
+        json.dump(merged, file, indent=4, cls=JSONEncoder)
+
+    assert isinstance(merged, dict)
+    assert get_result_dict()[test_group_name] == merged
 
 class TestJSONMerger:
 
     def test_JSONMerger_simple(self):
-        test = "simple"
-        json_merger = get_merged_instance()
-        docs: [dict] = get_data(test)
-        merged = json_merger.get_merged_document(docs)
-        # print(merged)
-        with open("./out/" + test + "_merged.json", "w+") as file:
-            json.dump(merged, file, indent=4, cls=JSONEncoder)
-        assert isinstance(merged, dict)
-        assert get_result_dict()[test] == merged
+        run_merger_test("simple")
 
     def test_JSONMerger_nested_doc(self):
-        test = "nested_doc"
-        json_merger = get_merged_instance()
-        docs: [dict] = get_data(test)
-        merged = json_merger.get_merged_document(docs)
-        # print(merged)
-        with open("./out/" + test + "_merged.json", "w+") as file:
-            json.dump(merged, file, indent=4, cls=JSONEncoder)
-        assert isinstance(merged, dict)
-        assert get_result_dict()[test] == merged
+        run_merger_test("nested_doc")
 
     def test_JSONMerger_nested_array(self):
-        test = "nested_array"
-        json_merger = get_merged_instance()
-        docs: [dict] = get_data(test)
-        merged = json_merger.get_merged_document(docs)
-        # print(merged)
-        with open("./out/" + test + "_merged.json", "w+") as file:
-            json.dump(merged, file, indent=4, cls=JSONEncoder)
-        assert isinstance(merged, dict)
-        assert get_result_dict()[test] == merged
+        run_merger_test("nested_array")
 
     def test_JSONMerger_nullable_array_and_record(self):
-        test = "nullable_array_and_record"
-        json_merger = get_merged_instance()
-        docs: [dict] = get_data(test)
-        merged = json_merger.get_merged_document(docs)
-        # print(merged)
-        with open("./out/" + test + "_merged.json", "w+") as file:
-            json.dump(merged, file, indent=4, cls=JSONEncoder)
-        assert isinstance(merged, dict)
-        assert get_result_dict()[test] == merged
+        run_merger_test("nullable_array_and_record")
 
     def test_JSONMerger_array(self):
-        test = "array"
-        json_merger = get_merged_instance()
-        docs: [dict] = get_data(test)
-        merged = json_merger.get_merged_document(docs)
-        # print(merged)
-        with open("./out/" + test + "_merged.json", "w+") as file:
-            json.dump(merged, file, indent=4, cls=JSONEncoder)
-        assert isinstance(merged, dict)
-        assert get_result_dict()[test] == merged
+        run_merger_test("array")
 
     def test_JSONMerger_complex(self):
-        test = "complex"
-        json_merger = get_merged_instance()
-        docs: [dict] = get_data(test)
-        merged = json_merger.get_merged_document(docs)
-        # print(merged)
-        with open("./out/" + test + "_merged.json", "w+") as file:
-            json.dump(merged, file, indent=4, cls=JSONEncoder)
-        assert isinstance(merged, dict)
-        assert get_result_dict()[test] == merged
+        run_merger_test("complex")
 
     def test_JSONMerger_deeply_nested(self):
-        test = "deeply_nested"
-        json_merger = get_merged_instance()
-        docs: [dict] = get_data(test)
-        merged = json_merger.get_merged_document(docs)
-        # print(merged)
-        with open("./out/" + test + "_merged.json", "w+") as file:
-            json.dump(merged, file, indent=4, cls=JSONEncoder)
-        assert isinstance(merged, dict)
-        assert get_result_dict()[test] == merged
+        run_merger_test("deeply_nested")

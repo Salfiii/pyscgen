@@ -1,4 +1,4 @@
-poetry config repositories.test-pypi https://test.pypi.org/legacy/
+poetry config repositories.test-pypi should
 @echo off
 set /p "token=TestPyPi Token: "
 poetry config pypi-token.test-pypi %token%

@@ -8,6 +8,7 @@ import fastavro
 import pytest
 
 from pyscgen.avro.schema.create_schema import AvroSchemaGenerator
+from tests.test_data_commons import get_data_path, get_path_rel_to
 
 
 def get_test_avro_schema():
@@ -27,9 +28,8 @@ def get_data(test: str) -> dict:
     :return:
     """
     return_obj: dict = {}
-    data_folder: str = "../data/"
     data = []
-    test_path: str = data_folder + test
+    test_path: str = os.path.join(get_data_path(), test)
     for filename in os.listdir(test_path):
         file_path = os.path.join(test_path, filename)
         with open(file_path, "r") as file:
@@ -43,134 +43,53 @@ def get_data(test: str) -> dict:
 def get_instance():
     return AvroSchemaGenerator(True)
 
+def run_schema_test(test_group_name: str):
+    """
+    Run a standard schema test.
+    :param test_group_name: Test group name (used for file paths)
+    """
+    generator = get_instance()
+    data: dict = get_data(test_group_name)
+
+    for test, docs in data.items():
+        print("working on test: " + test)
+        schema = generator.create_schema(docs)
+        schema_str = json.dumps(schema.as_dict(), indent=2)
+
+        schema_path: str = get_path_rel_to(__file__,  "./out/" + test + "_out_schema.avsc")
+        with open(schema_path, "w+") as file:
+            json.dump(schema.as_dict(), file, indent=2)
+        print(schema_str)
+        # Einlesen des ersten gefundenen AVRO-Schemas
+        with open(schema_path) as value_schema_file:
+            value_schema_str = value_schema_file.read()
+
+        with open(get_path_rel_to(__file__, "./in/data/" + test + "_merged.json")) as file:
+            doc = json.load(file)
+            fastavro.validation.validate(doc, fastavro.parse_schema(json.loads(value_schema_str)))
 
 class TestAvroSchemaGenerator:
 
     def test_schema_generation_simple(self):
-        generator = get_instance()
-        data: dict = get_data("simple")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_str = json.dumps(schema.as_dict(), indent=2)
-            schema_path: str = "./out/" + test + "_out_schema.avsc"
-            with open(schema_path, "w+") as file:
-                json.dump(schema.as_dict(), file, indent=2)
-            print(schema_str)
-            # Einlesen des ersten gefundenen AVRO-Schemas
-            with open(schema_path, "r") as value_schema_file:
-                value_schema_str = value_schema_file.read()
-            with open("./in/data/" + test + "_merged.json", "r") as file:
-                doc = json.load(file)
-                fastavro.validation.validate(doc, fastavro.parse_schema(json.loads(value_schema_str)))
+        run_schema_test("simple")
 
     def test_schema_generation_nested_doc(self):
-        generator = get_instance()
-        data: dict = get_data("nested_doc")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_str = json.dumps(schema.as_dict(), indent=2)
-            schema_path: str = "./out/" + test + "_out_schema.avsc"
-            with open(schema_path, "w+") as file:
-                json.dump(schema.as_dict(), file, indent=2)
-            print(schema_str)
-            # Einlesen des ersten gefundenen AVRO-Schemas
-            with open(schema_path, "r") as value_schema_file:
-                value_schema_str = value_schema_file.read()
-            with open("./in/data/" + test + "_merged.json", "r") as file:
-                doc = json.load(file)
-                fastavro.validation.validate(doc, fastavro.parse_schema(json.loads(value_schema_str)))
+        run_schema_test("nested_doc")
 
     def test_schema_generation_nested_array(self):
-        generator = get_instance()
-        data: dict = get_data("nested_array")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_str = json.dumps(schema.as_dict(), indent=2)
-            schema_path: str = "./out/" + test + "_out_schema.avsc"
-            with open(schema_path, "w+") as file:
-                json.dump(schema.as_dict(), file, indent=2)
-            print(schema_str)
-            # Einlesen des ersten gefundenen AVRO-Schemas
-            with open(schema_path, "r") as value_schema_file:
-                value_schema_str = value_schema_file.read()
-            with open("./in/data/" + test + "_merged.json", "r") as file:
-                doc = json.load(file)
-                fastavro.validation.validate(doc, fastavro.parse_schema(json.loads(value_schema_str)))
+        run_schema_test("nested_array")
 
     def test_schema_generation_nullable_array_and_record(self):
-        generator = get_instance()
-        data: dict = get_data("nullable_array_and_record")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_str = json.dumps(schema.as_dict(), indent=2)
-            schema_path: str = "./out/" + test + "_out_schema.avsc"
-            with open(schema_path, "w+") as file:
-                json.dump(schema.as_dict(), file, indent=2)
-            print(schema_str)
-            # Einlesen des ersten gefundenen AVRO-Schemas
-            with open(schema_path, "r") as value_schema_file:
-                value_schema_str = value_schema_file.read()
-            with open("./in/data/" + test + "_merged.json", "r") as file:
-                doc = json.load(file)
-                fastavro.validation.validate(doc, fastavro.parse_schema(json.loads(value_schema_str)))
+        run_schema_test("nullable_array_and_record")
 
     def test_schema_generation_complex(self):
-        generator = get_instance()
-        data: dict = get_data("complex")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_str = json.dumps(schema.as_dict(), indent=2)
-            schema_path: str = "./out/" + test + "_out_schema.avsc"
-            with open(schema_path, "w+") as file:
-                json.dump(schema.as_dict(), file, indent=2)
-            print(schema_str)
-            # Einlesen des ersten gefundenen AVRO-Schemas
-            with open(schema_path, "r") as value_schema_file:
-                value_schema_str = value_schema_file.read()
-            with open("./in/data/" + test + "_merged.json", "r") as file:
-                doc = json.load(file)
-                fastavro.validation.validate(doc, fastavro.parse_schema(json.loads(value_schema_str)))
+        run_schema_test("complex")
 
     def test_schema_generation_deeply_nested(self):
-        generator = get_instance()
-        data: dict = get_data("deeply_nested")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_str = json.dumps(schema.as_dict(), indent=2)
-            schema_path: str = "./out/" + test + "_out_schema.avsc"
-            with open(schema_path, "w+") as file:
-                json.dump(schema.as_dict(), file, indent=2)
-            print(schema_str)
-            # Einlesen des ersten gefundenen AVRO-Schemas
-            with open(schema_path, "r") as value_schema_file:
-                value_schema_str = value_schema_file.read()
-            with open("./in/data/" + test + "_merged.json", "r") as file:
-                doc = json.load(file)
-                fastavro.validation.validate(doc, fastavro.parse_schema(json.loads(value_schema_str)))
+        run_schema_test("deeply_nested")
 
     def test_schema_generation_array(self):
-        generator = get_instance()
-        data: dict = get_data("array")
-        for test, docs in data.items():
-            print("working on test: " + test)
-            schema = generator.create_schema(docs)
-            schema_str = json.dumps(schema.as_dict(), indent=2)
-            schema_path: str = "./out/" + test + "_out_schema.avsc"
-            with open(schema_path, "w+") as file:
-                json.dump(schema.as_dict(), file, indent=2)
-            print(schema_str)
-            # Einlesen des ersten gefundenen AVRO-Schemas
-            with open(schema_path, "r") as value_schema_file:
-                value_schema_str = value_schema_file.read()
-            with open("./in/data/" + test +"_merged.json", "r") as file:
-                doc = json.load(file)
-                fastavro.validation.validate(doc, fastavro.parse_schema(json.loads(value_schema_str)))
+        run_schema_test("array")
 
     def test_schema_generation_northdata(self):
         generator = get_instance()
@@ -179,14 +98,14 @@ class TestAvroSchemaGenerator:
             print("working on test: " + test)
             schema = generator.create_schema(docs)
             schema_str = json.dumps(schema.as_dict(), indent=2)
-            schema_path: str = "./out/" + test + "_out_schema.avsc"
+            schema_path: str = get_path_rel_to(__file__, "./out/" + test + "_out_schema.avsc")
             with open(schema_path, "w+") as file:
                 json.dump(schema.as_dict(), file, indent=2)
             print(schema_str)
             # Einlesen des ersten gefundenen AVRO-Schemas
             with open(schema_path, "r") as value_schema_file:
                 value_schema_str = value_schema_file.read()
-            with open("./in/data/" + test +"_merged.json", "r") as file:
+            with open(get_path_rel_to(__file__, "./in/data/" + test + "_merged.json")) as file:
                 doc = json.load(file)
                 with pytest.raises(fastavro._schema_common.SchemaParseException):
                     # A Schema ca be created but name redefinition is currently not handled and needs to be fixed manually by hand afterwards
@@ -219,7 +138,7 @@ class TestAvroSchemaGenerator:
         }
         schema = generator.create_schema([data])
         schema_str = json.dumps(schema.as_dict(), indent=2)
-        schema_path: str = "./out/alltypes_out_schema.avsc"
+        schema_path: str = get_path_rel_to(__file__, "./out/alltypes_out_schema.avsc")
         with open(schema_path, "w+") as file:
             json.dump(schema.as_dict(), file, indent=2)  # , cls=MyEncoder)
         print(schema_str)
